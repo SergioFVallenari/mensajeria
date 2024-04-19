@@ -1,0 +1,35 @@
+<div class="flex justify-content-evenly">
+    <div class="input">
+        <input nz-input placeholder="Basic usage" [(ngModel)]="value" type="number" />
+    </div>
+    <button nz-button nzType="primary" (click)="showModal()">Agregar</button>
+</div>
+<div class="p-5">
+    <nz-table #basicTable [nzData]="listOfData">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (data of basicTable.data; track $index){
+            <tr>
+              <td>{{ data.name }}</td>
+              <td>{{ data.phone }}</td>
+              <td>
+                <a>Action 一 {{ data.name }}</a>
+                <a>Delete</a>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </nz-table>
+    </div>
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="Agregar Contacto" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+      <ng-container *nzModalContent>
+        <input nz-input placeholder="Nombre" [(ngModel)]="name" type="text" />
+        <input nz-input placeholder="Teléfono" [(ngModel)]="phone" type="text" class="mt-2" />
+      </ng-container>
+    </nz-modal>
