@@ -16,4 +16,10 @@ export class AuthService {
   loginUser(data:User):Observable<User>{
     return this.http.post<User>(`${ENDPOINTS.api}/auth/login`, data)
   }
+
+  isLoggedIn() {
+    return !!localStorage.getItem('sessionMensajeria'); // Si encuentra el item de sessionMensajeria en localStorage, te devuelve un true
+    
+  }
+
 }
