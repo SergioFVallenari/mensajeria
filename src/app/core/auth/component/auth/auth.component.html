@@ -1,0 +1,29 @@
+<div class="flex justify-content-center w-screen h-screen bg-blue-900 align-items-center flex-column">
+  <h1>Ingresá a tu cuenta</h1>
+  <div class="bg-black-alpha-20 h-26rem w-5 p-6 justify-content-center flex align-items-center border-round-lg">
+    <div class="w-10">
+      <nz-input-group  [nzPrefix]="prefixTemplateUser">
+        <input type="text" nz-input placeholder="Correo" [(ngModel)]="email"/>
+      </nz-input-group>
+      <ng-template #prefixTemplateUser><span nz-icon nzType="email"></span></ng-template>
+      <nz-divider></nz-divider>
+      <nz-input-group [nzSuffix]="suffixTemplate">
+        <input
+          [type]="passwordVisible ? 'text' : 'password'"
+          nz-input
+          placeholder="input password"
+          [(ngModel)]="password"
+        />
+      </nz-input-group>
+      <ng-template #suffixTemplate>
+        <span
+          nz-icon
+          [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+          (click)="passwordVisible = !passwordVisible"
+        ></span>
+      </ng-template>
+      <nz-divider></nz-divider>
+      <button nz-button nzType="primary" nzBlock (click)="login()">Ingresar</button>
+    </div>
+  </div>
+</div>
